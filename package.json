@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AodenTeo/problems-backend/issues"
   },
-  "homepage": "https://github.com/AodenTeo/problems-backend#readme"
+  "homepage": "https://github.com/AodenTeo/problems-backend#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
