@@ -40,6 +40,7 @@ app.post('/Trigonometry/:number', (req, res, next) => {
         index = Math.floor(Math.random()*trigonometry.length);
         let string = trigonometry[index]();
         let questionNumber = 'Question ';
+        console.log('This worked');
         problems.push({ text: questionNumber, style: 'header'});
         problems.push({text: ' '});
         problems.push(string[0]);
