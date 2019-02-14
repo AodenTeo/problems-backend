@@ -50,6 +50,7 @@ app.post('/Trigonometry/:number', (req, res, next) => {
         solutions.push(string[1]);
         solutions.push('  ');
    }
+   res.send('This is the obligatory response');
 });
 app.post('/Algebra/:number', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -67,6 +68,7 @@ app.post('/Algebra/:number', (req, res, next) => {
         solutions.push(string[1]);
         solutions.push('  ');
    }
+   res.send('This is the obligatory response');
 });
 app.post('/Geometry/:number', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -84,6 +86,7 @@ app.post('/Geometry/:number', (req, res, next) => {
         solutions.push(string[1]);
         solutions.push('  ');
    }
+   res.send('This is the obligatory response');
 });
 app.post('/Arithmetic/:number', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -101,6 +104,7 @@ app.post('/Arithmetic/:number', (req, res, next) => {
         solutions.push(string[1]);
         solutions.push('  ');
    }
+   res.send('This is the obligatory response');
 });
 
 
