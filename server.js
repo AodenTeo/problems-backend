@@ -5,7 +5,7 @@ const geometry = require('./geometry.js');
 const arithmetic = require('./arithmetic.js');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 8080;
+const port = "https://problems-backend.herokuapp.com" || 8080;
 let problems = [];
 let solutions = [];
 app.listen(port, () => {
@@ -33,7 +33,7 @@ app.all('/*', function (req, res, next) {
 });
 //Here we can define our routes
 
-app.post('/trigonometry/:number', (req, res, next) => {
+app.post('/Trigonometry/:number', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     for (let x = 0; x < req.params.number; x++ ) {
@@ -50,7 +50,7 @@ app.post('/trigonometry/:number', (req, res, next) => {
         solutions.push('  ');
    }
 });
-app.post('/algebra/:number', (req, res, next) => {
+app.post('/Algebra/:number', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     for (let x = 0; x < req.params.number; x++ ) {
@@ -67,7 +67,7 @@ app.post('/algebra/:number', (req, res, next) => {
         solutions.push('  ');
    }
 });
-app.post('/geometry/:number', (req, res, next) => {
+app.post('/Geometry/:number', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     for (let x = 0; x < req.params.number; x++ ) {
@@ -84,7 +84,7 @@ app.post('/geometry/:number', (req, res, next) => {
         solutions.push('  ');
    }
 });
-app.post('/arithmetic/:number', (req, res, next) => {
+app.post('/Arithmetic/:number', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     for (let x = 0; x < req.params.number; x++ ) {
