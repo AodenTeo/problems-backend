@@ -234,7 +234,7 @@ function exam() {
     const numberOfRows = form.rand(20) + 20;
     const added = form.rand(10) + 2;
     const numberOfStudents = numberOfRows*(numberOfRows + added);
-    let string = `In an exam hall, tables are arranged in a grid-like fashion, in rows and columns. There are ${added} more columns than rows. If there are a total of ${numberOfStudents} sitting for the exam, and each one of them has exactly one table, how many rows are there?`;
+    let string = `In an exam hall, tables are arranged in a grid-like fashion, in rows and columns. There are ${added} more columns than rows. If there are a total of ${numberOfStudents} students sitting for the exam, and each one of them has exactly one table, how many rows are there?`;
     let answerString = `Let the number of rows be x. Then, we have x(x + ${added}) = ${numberOfStudents}. Expanding this, we get x^2 + ${added}x - ${numberOfStudents} = 0. Solving this and neglecting the negative value, we get that there are ${numberOfRows} rows in the exam hall.`;
     console.log(string);
     console.log(answerString);
