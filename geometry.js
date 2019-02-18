@@ -103,7 +103,31 @@ function race() {
 
 race();
 
+function rapunzel() {
+    let m;
+    let n;
+    do {
+        m = form.rand(20);
+        n = form.rand(20);
+    } while (m === n);
+    let a = m * m - n * n > 0 ? m * m - n * n : n * n - m * m;
+    let b = 2 * m * n;
+    let c = m * m + n * n;
+    const deadlys= ['a pit of poisonous snakes', 'a pit of man-eating vacuum cleaners', 'a reigon of spikes', 'a pit of rabid lawnmowers', 'a patch of quicksand', 'an army of evil trolls', 'an army of evil gnomes', ''];
+    const deadly = deadlys[Math.floor(Math.random()*deadlys.length)];
+    let string = `Rapunzel is trapped in a tower, and is trying to grow her hair long enough to use as a rope to climb out of the tower. However, her tower is surrounded by ${deadly} of width ${b}m. If her tower is ${a}m tall, what is the minimum length that her hair must be in order to escape the tower?`;
+    let answerString = `Using the pythagorean theorem, we determine that the minimum length of her hair must be sqrt(${b}^2 + ${a}^2) = ${c}. Thus, her hair must be at least ${c}m long for her to make her escape.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];    
+}
+
+rapunzel();
 
 
-const geometry = [shadow, comp, simTri, ramp, race];
+
+
+
+
+const geometry = [shadow, comp, simTri, ramp, race, rapunzel];
 module.exports = geometry;
