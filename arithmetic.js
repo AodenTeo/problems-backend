@@ -64,7 +64,7 @@ function posNeg() {
     let endTemp = parseFloat(finalTemp - secondChange).toFixed(3);
     const stuff = ['student', 'sweet', 'chair', 'table', 'computer', 'marker', 'pen', 'apple', 'chocolate', 'badge', 'cupcake', 'banana', 'basketball', 'bottle', 'jellybean', 'hat', 'bike', 'blanket', 'book', 'orange', 'chess piece'];
     const thing = stuff[Math.floor(Math.random()*stuff.length)];
-    let string = `${firstName} and ${secondName} are a magical snow monsters with the power to freeze things by touching them. When ${firstName} touches a ${thing} for ${timeHeld1} seconds, its temperature reduces from ${initialTemp} degrees to ${finalTemp} degrees. ${secondName} can cool an object ${numOfTimesFaster} times as fast as ${firstName}. If ${secondName} touches the ${thing} for ${timeHeld2} seconds, what is its final temperature?`;
+    let string = `${firstName} and ${secondName} are magical snow monsters with the power to freeze things by touching them. When ${firstName} touches a ${thing} for ${timeHeld1} seconds, its temperature reduces from ${initialTemp} degrees to ${finalTemp} degrees. ${secondName} can cool an object ${numOfTimesFaster} times as fast as ${firstName}. If ${secondName} touches the ${thing} for ${timeHeld2} seconds, what is its final temperature?`;
     let answerString = `The total temperature change when ${firstName} touches the object is ${initialTemp} - ${finalTemp} = ${tempChange}. Thus, the rate of cooling was ${tempChange}/${timeHeld1} = ${rate1}. Thus, the rate of cooling of ${secondName} is ${rate2}. Thus, the second temperature change is ${rate2}*${secondChange} = ${secondChange}. Thus, the final temperature is ${endTemp} degrees.`;
     console.log(string);
     console.log(answerString);
