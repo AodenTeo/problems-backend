@@ -1,78 +1,8 @@
 const form = require('./generalFunctions');
-function genQuadEq() {
-    let a;
-    let b;
-    let c;
-    do {
-        a = form.rand(10);
-        b = form.rand(10);        
-        c = form.rand(10);
-    } while (b*b - 4*a*c < 0);
-    let string = `Find all real roots of ${a}x^2 + ${b}x + ${c}.`;
-    let answerString = `Using the quadratic formuala, we determine that the roots of the equation are ${form.round(form.quad(a,b,c)[0], 3)} and ${form.round(form.quad(a,b,c)[1], 3)}`;   
-    console.log(string);
-    console.log(answerString);
-    return [string, answerString];
-    
-}
 
-function genUnsolvableQuadEq() {
-    let a;
-    let b;
-    let c;
-    do {
-        a = form.rand(10);
-        b = form.rand(10);
-        c = form.rand(10);
-    } while (b*b - 4*a*c >= 0);
-    let string = `Find all real roots of ${a}x^2 + ${b}x + ${c}.`;
-    let answerString = `Since the determinant = ${b}*${b} - 4*${a}*${c} = ${b*b - 4*a*c} < 0, there are no real roots`;
-    console.log(string);
-    console.log(answerString);
-    return [string, answerString];
-}
+const names = ['Tom', 'Peter', 'Sue', 'Denise', 'Rodger', 'Anne', 'Lucy', 'Lily', 'David', 'Joanne', 'Elizabeth', 'James', 'Bob', 'Michael', 'Albert', 'Stephen', 'Steve', 'Bill', 'Catherine', 'Emma', 'Emily', 'Elaine', 'Bianka', 'Ethan', 'Eliot', 'Lauren', 'Sam', 'Leonard', 'Nathan', 'Joy', 'Gretchen', 'Lousia', 'Zoey', 'Noah', 'Oliver', 'Benjamin'];
+const locations = ['Candyland', 'Dreamland', 'Euland', 'Fermaland', 'Feynland', 'Guiland', 'Quarkland', 'Ferm Island', 'Regiland'];
 
-function simEq() {
-    let a1 = form.rand(10);
-    let b1 = form.rand(10);
-    let c1 = form.rand(10);
-    let a2 = form.rand(10);
-    let b2 = form.rand(10);
-    let c2 = form.rand(10);
-    string = `Solve the following system of simultaneous equations: ${a1}x + ${b1}y = ${c1} and ${a2}x + ${b2}y = ${c2}`;
-    answerString = `Substituting x = (${c1} - ${b1}y)/${a1} into the second equation, we obtain y = ${form.round(form.sim(a1,b1,c1,a2,b2,c2)[1],3)} and x = ${form.round(form.sim(a1,b1,c1,a2,b2,c2)[0],3)}`;
-    console.log(string);
-    console.log(answerString);
-    return [string, answerString];
-}
-
-function factQuad() {
-    let r1 = form.rand(20);
-    let r2 = form.rand(20);
-    r1 = Math.random() > 0.5? r1 : -r1;
-    r2 = Math.random() > 0.5? r2 : -r2; 
-    let c = r1*r2;
-    let b = - r1 - r2;
-    string = `Find all real roots of x^2 + ${b}x + ${c} = 0`;
-    answerString = `Factoring the quadratic, we obtain (x - ${r1})(x - ${r2}) = 0. This the real roots are ${r1} and ${r2}.`;
-    console.log(string);
-    console.log(answerString);
-    return [string, answerString];
-}
-
-function aQuad() {
-    let a = form.rand(10);
-    let b = form.rand(10);
-    let c = form.rand(10);
-    let d = form.rand(10);
-    let r1 = -b/a;
-    let r2 = -d/c;
-    let a1 = a*c;
-    let b1 = a*d + b*c;
-    let c1 = b*d;
-    let string = `Find all real roots of ${a1}x^2 + ${b1}x + ${c1}`;
-    let answerString = `Factoring the quadratic, we obtain (${a}x + ${b})(${c}x + ${d}) = 0. Thus, the roots are ${r1} and ${r2}.`;
-}
 function animalLegs() {
     let numberOfChickens = form.rand(30);
     let numberOfCows = form.rand(30);
@@ -224,13 +154,92 @@ function quadSim() {
 function fence() {
     let totalFence = form.rand(40) + 10;
     let string = `A farmer has a total of ${totalFence}m of fence in order to build a rectangular pen for his sheep. What dimensions should the farmer make the pen in order to maximize its area?`
-    let answerString = `The then pen be x meters by y meters. Then, x + y = ${totalFence/2}. Then, the area of the fence = x(${totalFence/2} - x) = ${totalFence/2}x - x^2. Thus, the maximum point is (${form.quadExt(-1, totalFence/2, 0)[0], form.quadExt(-1, totalFence/2, 0)[1] }). Thus, the dimensions should be ${form.quadExt(-1, totalFence/2, 0)[0]} by ${totalFence - form.quadExt(-1, totalFence/2, 0)[0]}.`;
+    let answerString = `Let the pen be x meters by y meters. Then, x + y = ${totalFence/2}. Then, the area of the fence = x(${totalFence/2} - x) = ${totalFence/2}x - x^2. Thus, the maximum point is (${form.quadExt(-1, totalFence/2, 0)[0], form.quadExt(-1, totalFence/2, 0)[1] }). Thus, the dimensions should be ${form.quadExt(-1, totalFence/2, 0)[0]} by ${totalFence - form.quadExt(-1, totalFence/2, 0)[0]}.`;
     console.log(string);
     console.log(answerString);
     return [string, answerString];
 }
 
+function merchant() {
+    let name = names[Math.floor(Math.random()*names.length)];
+    let location = locations[Math.floor(Math.random()*locations.length)];
+    let price = (form.rand(50) + 50)*2;
+    let products = ['tulip', 'magical pencil', 'spice', 'exotic pineapple', 'sentient lawnmower', 'yodeling leafblower', 'musical vacuum cleaner'];
+    let product = products[Math.floor(Math.random()*products.length)];
+    let string = `${name} is approached by a strange merchant from ${location}. He offers to sell ${name} some ${product}s. ${name} is very excited becuase ${product}s can be sold for $${price} each. The merchant will charge ${name} as follows: x ${product}s will cost x*x dollars. Assuming that ${name} can sell all of the ${product}s that he buys, how many ${product}s should he buy to maximize his profits?`;
+    let answerString = `Let ${name}'s profits be p and let the number of ${product}s that ${name} buys be x. Then, we have the quadratic equation p = ${price}x - x^2. Thus, we maximize ${price}x - x^2. This is maximized at x = ${price}/2. Thus, ${name} should buy ${price/2} ${product}s.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
 
+function planet() {
 
-const algebra = [genQuadEq, genUnsolvableQuadEq, simEq, factQuad, animalLegs, alienEyes, bookQuestion, numSum, age, quadConsec, quadSim, fence];
+    let location = locations[Math.floor(Math.random()*locations.length)];
+    let emotions = ['happiness', 'sadness', 'anger', 'wealth', 'intelligence', 'hungriness', 'strangeness'];
+    let emotion = emotions[Math.floor(Math.random()*emotions.length)];
+    let a = form.rand(10);
+    let b = -form.rand(10);
+    let c = form.rand(10);
+    let d = -form.rand(10);
+    let r1 = parseFloat(-b/a).toFixed(3);
+    let r2 = parseFloat(-d/c).toFixed(3);
+    let a1 = a*c;
+    let b1 = a*d + b*c;
+    let c1 = b*d;
+    let string = `In ${location}, there is a strange element called emotionium. It expands and contracts according to the ${emotion} of the nearest sentient being. Let the expansion of emotionium be e. ${location}ian physicists have worked out the following formula: e = ${a1}x^2 + ${b1}x + ${c1}, where x is the amount of ${emotion} in the nearest sentient being. What must the ${emotion} of the nearedst sentient being be if the emotionium has neither expanded nor contracted? `;
+    let answerString = `Factoring the quadratic, we obtain (${a}x + ${b})(${c}x + ${d}) = 0. Thus, the ${emotion} of the nearest sentient being must be either ${r1} or ${r2}.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+
+function projectile() {
+    let location = locations[Math.floor(Math.random()*locations.length)];
+    let a = form.rand(10);
+    let b = -form.rand(10);
+    let c = form.rand(10);
+    let d = -form.rand(10);
+    let r1 = parseFloat(-b/a).toFixed(3);
+    let r2 = parseFloat(-d/c).toFixed(3);
+    let a1 = a*c;
+    let b1 = a*d + b*c;
+    let c1 = b*d;
+    string = `In ${location}, a projectile is launched into the air. A stopwatch is started several moments before the projectile is launched. Its height at a given time t on the stopwatch is given by the expression ${a1}t^2 + ${b1}t + ${c1}. At what time t was the projectile launched? At what time t will it land?`;
+    let launch = r1 > r2 ? r2 : r1;
+    let land = r1 > r2 ? r1 : r2;
+    answerString = `Factoring the quadratic, we obtain (${a}x + ${b})(${c}x + ${d}) = 0. Thus, the projectile takes off at time t = ${launch} and lands at t = ${land}`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+    
+}
+
+function bag() {
+    const numberOfThings = form.rand(25)  +50;
+    const added = form.rand(25);
+    const probability = parseFloat((1/numberOfThings) + (1/(numberOfThings + added))).toFixed(3);
+    const numerator = 2*numberOfThings + added;
+    const denominator = numberOfThings*(numberOfThings + added);
+    
+    const stuff = ['students', 'sweets', 'chairs', 'tables', 'computers', 'markers', 'pens', 'apples', 'chocolates', 'badges', 'cupcakes', 'bananas', 'basketballs', 'bottles', 'jellybeans', 'hats', 'bikes', 'blankets', 'books', 'oranges', 'chess pieces'];
+    const object = stuff[Math.floor(Math.random()*stuff.length)];
+    string = `There are some ${object} in a container. All of them are red, except for one, which is blue. When one of the ${object} is drawn randomly from the container, let the probability of drawing the blue one be p. Then, ${added} new red ${object} are added to the container. Now, let the probability of drawing the blue one be q. Given that p + q = ${numerator}/${denominator}, how many ${object} were there in the container originally?`;
+    answerString = `Let n be the number of ${object} originally. We have 1/n + 1/(n + ${added}) = ${probability}. Putting the LHS over a common denominator and then clearing the denominator, we obtain the quadratic ${probability}n^2 + ${added*probability -2}n - a = 0. Solving this equation using the quadratic formula and neglecting the negative value, we obtain that there were ${numberOfThings} ${object} originally.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+function exam() {
+    const numberOfRows = form.rand(20) + 20;
+    const added = form.rand(10) + 2;
+    const numberOfStudents = numberOfRows*(numberOfRows + added);
+    let string = `In an exam hall, tables are arranged in a grid-like fashion, in rows and columns. There are ${added} more columns than rows. If there are a total of ${numberOfStudents} sitting for the exam, and each one of them has exactly one table, how many rows are there?`;
+    let answerString = `Let the number of rows be x. Then, we have x(x + ${added}) = ${numberOfStudents}. Expanding this, we get x^2 + ${added}x - ${numberOfStudents} = 0. Solving this and neglecting the negative value, we get that there are ${numberOfRows} rows in the exam hall.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+
+const algebra = [animalLegs, alienEyes, bookQuestion, numSum, age, quadConsec, quadSim, fence, merchant, planet, projectile, bag, exam];
 module.exports = algebra;
