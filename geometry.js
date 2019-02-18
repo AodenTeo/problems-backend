@@ -17,8 +17,6 @@ function shadow() {
     return [string, answerString];
 }
 
-
-
 function comp() {
     let number = form.rand(20) + 1;
     let smallerAngle = parseFloat(180/(number + 1)).toFixed(3);
@@ -104,6 +102,8 @@ function race() {
 }
 
 race();
+
+
 
 const geometry = [shadow, comp, simTri, ramp, race];
 module.exports = geometry;

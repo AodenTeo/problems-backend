@@ -241,5 +241,37 @@ function exam() {
     return [string, answerString];
 }
 
-const algebra = [animalLegs, alienEyes, bookQuestion, numSum, age, quadConsec, quadSim, fence, merchant, planet, projectile, bag, exam];
+function wolf() {
+    let r1 = form.rand(10);
+    let r2 = -form.rand(10);
+    let b = -r1 -r2;
+    let c = r1*r2;
+    
+    let string = `A little piggy is running away from a big bad wolf. If the distance between the big bad wolf and the little piggy at time t in seconds is given by t^2 + ${b}t + ${c}, will the big bad wolf catch the little piggy? If so, when?`;
+    let answerString = `Yes, the big bad wolf will catch him. Solving the equation t^2 + ${b}t + ${c} = 0 gives roots ${r1} and ${r2}. Thus, he will be caught at ${r1} seconds.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];    
+}
+
+wolf();
+
+function wolfSurvive() {
+    let b , c;
+    do {
+        b = form.rand(10);
+        c = form.rand(10);
+    } while(b*b - 4*c >= 0);
+
+    let string = `A little piggy is running away from a big bad wolf. If the distance between the big bad wolf and the little piggy at time t in seconds is given by t^2 + ${b}t + ${c}, will the big bad wolf catch the little piggy? If so, when?`;
+    let answerString = `No, the big bad wolf will not catch him. Evaluating the determinant of the equation t^2 + ${b}t + ${c}, we get ${b*b} - 4*1*${c} < 0, which implies that there are no real roots, and as such the piggy will never be caught by the wolf.`;
+    console.log(string);
+    console.log(answerString);    
+    return [string, answerString];
+}
+
+wolfSurvive();
+
+const algebra = [animalLegs, alienEyes, bookQuestion, numSum, age, quadConsec, quadSim, fence, merchant, planet, projectile, bag, exam, wolf, wolfSurvive];
 module.exports = algebra;
+
