@@ -124,10 +124,61 @@ function rapunzel() {
 
 rapunzel();
 
+function cylindricalTank() {
+    const dripRate = form.rand(30);
+    const radiusA = form.rand(40);
+    const radiusB = form.rand(40);
+    const time = form.rand(20) + 1;
+    const volumeLost = time*dripRate;
+    const heightDecreaseA = parseFloat(volumeLost/(Math.PI*radiusA*radiusA)).toFixed(3);
+    const heightDecreaseB = parseFloat(volumeLost/(Math.PI*radiusB*radiusB)).toFixed(3);
+    let string = `Two cylindtical containers a steadily dripping water at a constant rate of ${dripRate} litres per second. After ${time} seconds, the water level in tank A decreased by ${heightDecreaseA}cm and the water level in tank B decreased by ${heightDecreaseB}cm. If the capacity of both water tanks is the same, then what is the ratio of the height of tank A to the height of tank B?`;
+    let answerString = `In ${time} seconds, the volume lost by b both containers will be ${volumeLost}. Thus, the ratio of the base areas of the cylinders is ${parseFloat(volumeLost/heightDecreaseA).toFixed(3)}/${parseFloat(volumeLost/heightDecreaseB).toFixed(3)}. Hence, the ratio of the height of tank A to the height of tank B is ${parseFloat(volumeLost/heightDecreaseB).toFixed(3)}/${parseFloat(volumeLost/heightDecreaseA).toFixed(3)} = ${parseFloat(parseFloat(volumeLost/heightDecreaseB).toFixed(3)/(parseFloat(volumeLost/heightDecreaseA).toFixed(3))).toFixed(3)}`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+
+cylindricalTank();
+
+function planet() {
+    const shadow = form.rand(10);
+    const pole = form.rand(10);
+    const planets = ['Mars', 'Jupiter', 'Neptune', 'Pluto', 'Nibiru', 'Xena', 'Cerberus', 'Dekatoo', 'Decadia', 'Dekatos'];
+    const planet = planets[Math.floor(Math.random()*planets.length)];
+    const distance = form.rand(1000) + 100;
+    const angle = parseFloat(Math.atan(shadow/pole)).toFixed(3);
+    const alienNames = ['Suban', 'Oo\'daloon', 'Bhewginoo', 'Spleehae Plagnor', 'Rog Thuvaz', 'Kzortrokan', 'Sojan', 'Sossios Naze', 'Nuetzo Entayta', 'Vendol', 'Kneebo Uavoo', 'Jillintor Vovlov', 'Nueto Ruubv\'h', 'A\'qhuakyun', 'Bugwin'];
+    const alienName = alienNames[Math.floor(Math.random()*alienNames.length)];
+    
+    let string = `${alienName}, a mathematician from the planet ${planet}, is trying to figure out the circumferance of his planet. He knows that on the summer solstice in a nearby town, the sun will be directly overhead at 12 noon. This town is ${distance}m away from ${alienName}'s house. On the summer solstice at 12 noon, ${alienName} puts out a ${pole}m tall pole in his backyard and measures the shadow to be ${shadow}m long. What is the circumferance of ${planet}?`;
+    let answerString = `To compute the angle between the rod and the beam of light casting the shadow from the sun, we take arctan(${shadow}/${pole}) = ${parseFloat(Math.atan(shadow/pole)).toFixed(3)}. Thus, we know that the angle of the minor arc from the pole to the town is ${angle}. Hence, the circumferance of ${planet} is ${parseFloat(((Math.PI*2)/angle)*distance).toFixed(3)}m`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+
+planet();
+
+function pyramids() {
+    const difference = form.rand(10)*2;
+    const dimensions = difference/2;
+    const minVolume = dimensions*(dimensions + difference);
+    const height = Math.random() > 0.5? 'height' : 'base area';
+    const baseArea = (height === 'height')? 'base area' : 'height';
+    const alienNames = ['Suban', 'Oo\'daloon', 'Bhewginoo', 'Spleehae Plagnor', 'Rog Thuvaz', 'Kzortrokan', 'Sojan', 'Sossios Naze', 'Nuetzo Entayta', 'Vendol', 'Kneebo Uavoo', 'Jillintor Vovlov', 'Nueto Ruubv\'h', 'A\'qhuakyun', 'Bugwin'];
+    const alienName = alienNames[Math.floor(Math.random()*alienNames.length)];
+    const planets = ['Mars', 'Jupiter', 'Neptune', 'Pluto', 'Nibiru', 'Xena', 'Cerberus', 'Dekatoo', 'Decadia', 'Dekatos'];
+    const planet = planets[Math.floor(Math.random()*planets.length)];
+    let string = `${alienName} is an alien from the planet ${planet}. He is trying to make a present for humans. He wants to give humans the most valuable gift on his planet: a lucky cone. In order for a cone to be lucky, its ${baseArea} must be exactly ${difference} more than its ${height} in alien length units. The smaller the volume of a lucky cone, the more valuable it is. What is the minimum volume that ${alienName} can make the cone?`;
+    let answerString = `Let the ${height} of the cone be h. The volume of the cone will be (1/3)*h*(h+${difference}). This is minimized at ${dimensions} alien length units. Thus, the minimum volume is ${minVolume} alien volume units.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+
+pyramids();
 
 
-
-
-
-const geometry = [shadow, comp, simTri, ramp, race, rapunzel];
+const geometry = [shadow, comp, simTri, ramp, race, rapunzel, cylindricalTank, planet, pyramids];
 module.exports = geometry;
