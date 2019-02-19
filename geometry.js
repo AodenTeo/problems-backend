@@ -1,4 +1,6 @@
 const form = require('./generalFunctions');
+const names = ['Tom', 'Peter', 'Sue', 'Denise', 'Rodger', 'Anne', 'Lucy', 'Lily', 'David', 'Joanne', 'Elizabeth', 'James', 'Bob', 'Michael', 'Albert', 'Stephen', 'Steve', 'Bill', 'Catherine', 'Emma', 'Emily', 'Elaine', 'Bianka', 'Ethan', 'Eliot', 'Lauren', 'Sam', 'Leonard', 'Nathan', 'Joy', 'Gretchen', 'Lousia', 'Zoey', 'Noah', 'Oliver', 'Benjamin'];
+
 
 function shadow() {
     let lamp;
@@ -179,6 +181,41 @@ function pyramids() {
 
 pyramids();
 
+function tag() {
+    let coordinate1, coordinate2;
+    do {
+        coordinate1 = [form.rand(100), form.rand(100)];
+        coordinate2 = [form.rand(100), form.rand(100)];
+    } while (coordinate1[0] === coordinate2[0]);
+    const x1 = coordinate1[0];
+    const x2 = coordinate2[0];
+    const y1 = coordinate1[1];
+    const y2 = coordinate2[1];
+    const midx = (x1 + x2)/2;
+    const midy = (y1 + y2)/2;
+    const gradOriginal = parseFloat((y2 - y1)/(x2 - x1)).toFixed(3);
+    const gradEventual = parseFloat(-1/gradOriginal).toFixed(3);
+    const answer = parseFloat((gradEventual*midx - midy)/gradEventual).toFixed(3);
+    let firstName;
+    let secondName;
+    do {
+        firstName = names[Math.floor(Math.random()*names.length)];
+        secondName = names[Math.floor(Math.random()*names.length)];
+    } while (firstName === secondName);
+    let string = `${firstName} and ${secondName} are playing tag on the cartesian plane. ${firstName} is at (${x1}, ${y1}) and ${secondName} is at (${x2}, ${y2}). ${firstName} is trying to reach the x-axis without being caught. Assume that ${firstName} and ${secondName} are infinitely agile and equally fast. Find the range of points on the x-axis that ${firstName} can reach without getting caught? (For example, if ${firstName} can reach the x-axis at (3,0) without being caught, then that 3 must be in the range).`;
+    let answerString;
+    if (x1 < x2) {
+        answerString = `Let X be the midpoint of the line between ${firstName} and ${secondName}. Draw a line L through the midpoint and perpendicular to the line connecting ${firstName} and ${secondName}. Any point to the left of the line is closer to ${firstName}, and hence ${firstName} can reach it first. The midpoint between ${firstName} and ${secondName} is (${midx}, ${midy}). Thus, the equation of the line throught (${midx}, ${midy}) perpendicular to ${firstName} and ${secondName} is y - ${midy} = ${gradEventual}(x - ${midx}). Solving for the x-intercept, we get ${answer}. Thus, x < ${answer}`;
+    } else {
+        answerString = `Let X be the midpoint of the line between ${firstName} and ${secondName}. Draw a line L through the midpoint and perpendicular to the line connecting ${firstName} and ${secondName}. Any point to the right of the line is closer to ${firstName}, and hence ${firstName} can reach it first. The midpoint between ${firstName} and ${secondName} is (${midx}, ${midy}). Thus, the equation of the line throught (${midx}, ${midy}) perpendicular to ${firstName} and ${secondName} is y - ${midy} = ${gradEventual}(x - ${midx}). Solving for the x-intercept, we get ${answer}. Thus, x > ${answer}`;
+    }
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
 
-const geometry = [shadow, comp, simTri, ramp, race, rapunzel, cylindricalTank, planet, pyramids];
+tag();
+
+
+const geometry = [shadow, comp, simTri, ramp, race, rapunzel, cylindricalTank, planet, pyramids, tag];
 module.exports = geometry;
