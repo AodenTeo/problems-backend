@@ -15,7 +15,7 @@ function bell() {
     const day = form.rand(20);
     const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September','October', 'November', 'December'][Math.floor(Math.random()*11 + 1)];
     let string = `Three wolves howl at regular intervals of ${bellTime1} minuites, ${bellTime2} minuites, and ${bellTime3} minuites respectively. Given that they howl together at ${time} on the ${day}th of ${month}, how long in minuites will it be before they howl together again.`;
-    let answerString = `Taking the lowest commen multiple of ${bellTime1}, ${bellTime2}, and ${bellTime3} we get ${parseFloat(form.lcm([bellTime1, bellTime2, bellTime3])).toFixed(0)}. Thus, the next time that they howl together wil be in ${parseFloat(form.lcm([bellTime1, bellTime2, bellTime3])).toFixed(0)} minuites`;
+    let answerString = `Taking the lowest common multiple of ${bellTime1}, ${bellTime2}, and ${bellTime3} we get ${parseFloat(form.lcm([bellTime1, bellTime2, bellTime3])).toFixed(0)}. Thus, the next time that they howl together wil be in ${parseFloat(form.lcm([bellTime1, bellTime2, bellTime3])).toFixed(0)} minuites`;
     console.log(string);
     console.log(answerString);
     return [string, answerString];
@@ -91,9 +91,97 @@ function comets() {
     return [string, answerString];
 }
 
+function excercise() {
+    let excercises = ['push up', 'sit up', 'pull up', 'squat'];
+    let excercise = excercises[Math.floor(Math.random()*excercises.length)];
+    let name = names[Math.floor(Math.random()*names.length)];
+    let numOfDays = form.rand(100) + 100;
+    let numOfExcercises = ((numOfDays + 1)*numOfDays)/2;
+    let string = `${name} is trying to get better at ${excercise}s. He has decided that on the first day of his training he will do 1 ${excercise}, on the second day he will do 2 ${excercise}s, ... , on the nth day, he will do n ${excercise}s. On day ${numOfDays}, how many ${excercise}s will he have done throughout his training.`;
+    let answerString = `The number of ${excercise}s that he will have done is equal to the ${numOfDays}th triangular number. Thus, he will have done ${numOfDays}*${numOfDays + 1}/2 = ${numOfExcercises} ${excercise}s in total.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
 
+excercise();
 
-const arithmetic = [comets, posNeg, sweets, bell];
+function giveOut() {
+    name = names[Math.floor(Math.random()*names.length)];
+    const stuff = ['sweets', 'chairs', 'tables', 'computers', 'markers', 'pens', 'apples', 'chocolates', 'badges', 'cupcakes', 'bananas', 'basketballs', 'bottles', 'jellybeans', 'hats', 'bikes', 'blankets', 'books', 'oranges', 'chess pieces'];
+    let thing1, thing2;
+    do {
+        thing1 = stuff[Math.floor(Math.random()*stuff.length)];
+        thing2 = stuff[Math.floor(Math.random()*stuff.length)];
+    } while (thing1 === thing2);
+    let object1, object2;
+    do {
+        object1 = stuff[Math.floor(Math.random()*stuff.length)];
+        object2 = stuff[Math.floor(Math.random()*stuff.length)];
+    } while (object1 === object2);
+    let num1, num2;
+    do {
+        num1 = 2*form.rand(100) + 4;
+        num2 = 2*form.rand(100) + 4;
+    } while (num1 === num2);
+    let string = `${name} has ${num1} ${thing1} and ${num2} ${thing2}. He is giving them out in packages. If he needs to use all the ${thing1} and ${thing2}, what is the greatest number of packages that he can give out?`;
+    let answerString = `The greatest number of packages possible is the greatest common divisor of ${num1} and ${num2} which is ${form.gcd([num1, num2])}.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+
+giveOut();
+
+function moons() {
+    let bellTime1;
+    let bellTime2;
+    let  bellTime3;
+    let commonality = form.rand(5);
+    do {
+        bellTime1 = commonality*(form.rand(20) + 3);
+        bellTime2 = commonality*(form.rand(20) + 3);
+        bellTime3 = form.rand(60) + 10;
+    } while (bellTime1 === bellTime2 || bellTime1 == bellTime3 || bellTime2 === bellTime3);
+    const time = form.rand(20) + 1990;
+    const year = time + Number(parseFloat(form.lcm([bellTime1, bellTime2, bellTime3])).toFixed(0));
+    let string = `Supermoons occur once every ${bellTime1} years. Blue moons occur once every ${bellTime2} years, and blood moons occur once every ${bellTime3} years respectively. Given that they last occured together in ${time}, when will they next they will occur together?`;
+    let answerString = `Taking the lowest common multiple of ${bellTime1}, ${bellTime2}, and ${bellTime3} we get ${parseFloat(form.lcm([bellTime1, bellTime2, bellTime3])).toFixed(0)}. Thus, the next time that they will occur together will be in ${parseFloat(form.lcm([bellTime1, bellTime2, bellTime3])).toFixed(0)} years in ${year}.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+
+moons();
+
+function golf() {
+    let firstName;
+    let secondName;
+    let thirdName;
+    do {
+      firstName = names[form.rand(names.length) - 1];
+      secondName = names[form.rand(names.length) - 1];
+      thirdName = names[form.rand(names.length) - 1];
+    } while (firstName === secondName || firstName === thirdName || secondName === thirdName);
+    let bellTime1;
+    let bellTime2;
+    let bellTime3;
+    let commonality = form.rand(5);
+    do {
+        bellTime1 = commonality*(form.rand(10) + 3);
+        bellTime2 = commonality*(form.rand(10) + 3);
+        bellTime3 = form.rand(10) + 10;
+    } while (bellTime1 === bellTime2 || bellTime1 == bellTime3 || bellTime2 === bellTime3);
+
+    let string = `${firstName} goes golfing every ${bellTime1} days. ${secondName} goes golfing every ${bellTime2} days. ${thirdName} goes golfing every ${bellTime3} days. If they last went golfing together today, how many days will it be before they all go golfing again?`;
+    let answerString = `Taking the lowest common multiple of ${bellTime1}, ${bellTime2}, and ${bellTime3} we get ${parseFloat(form.lcm([bellTime1, bellTime2, bellTime3])).toFixed(0)}. Thus, the next time that they go golfing together wil be in ${parseFloat(form.lcm([bellTime1, bellTime2, bellTime3])).toFixed(0)} days`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+golf();
+
+const arithmetic = [comets, posNeg, sweets, bell, excercise, giveOut, moons, golf];
 module.exports = arithmetic;
 
 

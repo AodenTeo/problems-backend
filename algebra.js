@@ -222,7 +222,7 @@ function bag() {
     const numerator = 2*numberOfThings + added;
     const denominator = numberOfThings*(numberOfThings + added);
     
-    const stuff = ['students', 'sweets', 'chairs', 'tables', 'computers', 'markers', 'pens', 'apples', 'chocolates', 'badges', 'cupcakes', 'bananas', 'basketballs', 'bottles', 'jellybeans', 'hats', 'bikes', 'blankets', 'books', 'oranges', 'chess pieces'];
+    const stuff = ['sweets', 'chairs', 'tables', 'computers', 'markers', 'pens', 'apples', 'chocolates', 'badges', 'cupcakes', 'bananas', 'basketballs', 'bottles', 'jellybeans', 'hats', 'bikes', 'blankets', 'books', 'oranges', 'chess pieces'];
     const object = stuff[Math.floor(Math.random()*stuff.length)];
     string = `There are some ${object} in a container. All of them are red, except for one, which is blue. When one of the ${object} is drawn randomly from the container, let the probability of drawing the blue one be p. Then, ${added} new red ${object} are added to the container. Now, let the probability of drawing the blue one be q. Given that p + q = ${numerator}/${denominator}, how many ${object} were there in the container originally?`;
     answerString = `Let n be the number of ${object} originally. We have 1/n + 1/(n + ${added}) = ${probability}. Putting the LHS over a common denominator and then clearing the denominator, we obtain the quadratic ${probability}n^2 + ${added*probability -2}n - a = 0. Solving this equation using the quadratic formula and neglecting the negative value, we obtain that there were ${numberOfThings} ${object} originally.`;
