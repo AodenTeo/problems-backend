@@ -67,7 +67,7 @@ function ramp() {
     let b1 = b*random;
     let c1 = c*random;
     let speed = form.rand(10);
-    let time = parseFloat(a/speed).toFixed(3);
+    let time = parseFloat(c/speed).toFixed(3);
     const activities = [{activity: 'cycling', surface: 'ramp'}, {activity: 'running', surface: 'incline'}, {activity: 'skateboarding', surface: 'ramp'}, {activity: 'skiing', surface: 'ski slope'}, {activity: 'driving', surface: 'ramp'}, {activity: 'roller blading', surface: 'ramp'}, {activity: 'snowboarding', surface: 'slope'}];
     const names = ['Tom', 'Peter', 'Sue', 'Denise', 'Rodger', 'Anne', 'Lucy', 'Lily', 'David', 'Joanne', 'Elizabeth', 'James', 'Bob', 'Michael', 'Albert', 'Stephen', 'Steve', 'Bill', 'Catherine', 'Emma', 'Emily', 'Elaine', 'Bianka', 'Ethan', 'Eliot', 'Lauren', 'Sam', 'Leonard', 'Nathan', 'Joy', 'Gretchen', 'Lousia', 'Zoey', 'Noah', 'Oliver', 'Benjamin'];
     let variation = activities[Math.floor(Math.random()*activities.length)];
