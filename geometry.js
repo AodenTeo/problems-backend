@@ -216,6 +216,22 @@ function tag() {
 
 tag();
 
+function cheating() {
+    let firstName;
+    let secondName;
+    do {
+        firstName = names[Math.floor(Math.random()*names.length)];
+        secondName = names[Math.floor(Math.random()*names.length)];
+    } while (firstName === secondName);
+    let fairDist = form.rand(400);
+    let diameter = parseFloat(fairDist/Math.PI).toFixed(3);
+    let string = `${firstName} and ${secondName} are running a race around a circular track. ${firstName} follows the rules and runs around the whole track. ${firstName} runs a total of ${fairDist}m. ${secondName} decides to cheat. ${secondName} runs across the diameter of the circle. How much further does ${firstName} run than ${secondName}?`;
+    let answerString = `To find the diameter of the track, we evaluate ${fairDist}/${parseFloat(Math.PI).toFixed(3)} = ${diameter}. Thus, ${secondName} runs ${diameter}m. Hence, ${firstName} runs ${parseFloat(fairDist - diameter).toFixed(3)}m more than ${secondName}.`;
+    console.log(string);
+    console.log(answerString);
+    return [string, answerString];
+}
+cheating();
 
-const geometry = [shadow, comp, simTri, ramp, race, rapunzel, cylindricalTank, planet, pyramids, tag];
+const geometry = [shadow, comp, simTri, ramp, race, rapunzel, cylindricalTank, planet, pyramids, tag, cheating];
 module.exports = geometry;
