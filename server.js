@@ -3,6 +3,7 @@ const trigonometry = require('./problems.js');
 const algebra = require('./algebra.js');
 const geometry = require('./geometry.js');
 const arithmetic = require('./arithmetic.js');
+const chemistry = require('./chemistry.js')
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
@@ -106,7 +107,24 @@ app.post('/Arithmetic/:number', (req, res, next) => {
    }
    res.send('This is the obligatory response');
 });
-
+app.post('/Chemistry/:number', (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    for (let x = 0; x < req.params.number; x++ ) {
+        index = Math.floor(Math.random()*chemistry.length);
+        let string = chemistry[index]();
+        let questionNumber = 'Question ';
+        problems.push({ text: questionNumber, style: 'header'});
+        problems.push({text: ' '});
+        problems.push(string[0]);
+        problems.push('  ');
+        solutions.push({ text: questionNumber, style: 'header'});
+        solutions.push({text: ' '});
+        solutions.push(string[1]);
+        solutions.push('  ');
+   }
+   res.send('This is the obligatory response');
+});
 
 app.get('/problems', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
